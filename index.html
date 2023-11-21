@@ -9,11 +9,17 @@
 </head>
 <body>
     <div id="app">
+        <header>
+            <h1>{{sitename}}</h1>
+            <button>{{cartItemCount}} <span>Cart</span></button>
+        </header>
         <div v-for="lesson in lessons">
             <h3>Lesson: {{lesson.lesson}}</h3>
             <p>Location: {{lesson.location}}</p>
             <p>Price: {{lesson.price}}</p>
-            <h4>Spaces: {{lesson.spaces}}</h4>
+            <h4>Spaces: {{lesson.spaces - cartCount(lesson.id)}}</h4>
+            <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)">Add to Cart</button>
+            <button disabled='disabled' v-else="canAddToCart(lesson)">Add to cart</button>
         </div>
     </div>
     <script src="app.js"></script>
