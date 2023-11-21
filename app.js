@@ -3,10 +3,15 @@ var webstore = new Vue({
     data: {
         sitename: "After School Lessons",
         lessons: lessons,
+        showLesson: true,
+        order: {
+            name: '',
+            number: ''
+        },
         cart: [],
     },
     methods: {
-        addToCart: function (lesson) {
+        addToCart(lesson) {
             this.cart.push( lesson.id);
         },
         canAddToCart: function(lesson) {
@@ -20,12 +25,21 @@ var webstore = new Vue({
                 }
             }
             return count;
-        }
+        },
+        showCheckout() {
+            this.showLesson = this.showLesson ? false : true;
+        },
+        submitForm() {
+            alert('Order submitted!')
+        },
     },
     computed: {
         cartItemCount: function() {
             return this.cart.length ;
         },
+        canCheckOut(){
+            return this.order.name !== "" && this.order.number !== "";
+        }
        
     }
 });
