@@ -15,7 +15,8 @@
         </header>
         <div v-if="showLesson">
 
-            <div v-for="lesson in lessons">
+            <div v-for="lesson in sortedProducts">
+                <img v-bind:src="lesson.image" alt="" height="200px">
                 <h3>Lesson: {{lesson.lesson}}</h3>
                 <p>Location: {{lesson.location}}</p>
                 <p>Price: {{lesson.price}}</p>

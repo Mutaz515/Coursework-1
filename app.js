@@ -39,7 +39,17 @@ var webstore = new Vue({
         },
         canCheckOut(){
             return this.order.name !== "" && this.order.number !== "";
+        },
+        sortedProducts() {
+            let lessonsArray = this.lessons.slice(0);
+            function compare(a, b) {
+                if (a.price > b.price)
+                    return 1;
+                if (a.price < b.price)
+                    return -1;
+                return 0;
+            }
+            return lessonsArray.sort(compare);
         }
-       
     }
 });
