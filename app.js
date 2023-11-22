@@ -28,6 +28,9 @@ var webstore = new Vue({
             }
             return count;
         },
+        getLessonDetails(lessonId) {
+            return this.lessons.find((lesson) => lesson.id === lessonId);
+          },
         showCheckout() {
             this.showLesson = this.showLesson ? false : true;
         },

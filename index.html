@@ -57,8 +57,13 @@
         </div>
         <div v-else="showLesson">
             <h1>Check Out Page</h1>
-            <div v-for="lesson in cart" >
-                <h3>{{lesson.lesson}}</h3>
+            <div v-for="(lessonId, index) in cart" :key="index">
+                <img v-bind:src="getLessonDetails(lessonId).image" alt="" height="200px">
+                <h3>Lesson: {{getLessonDetails(lessonId).lesson}}</h3>
+                <p>Location: {{getLessonDetails(lessonId).location}}</p>
+                <p>Price: {{getLessonDetails(lessonId).price}}</p>
+                
+                <button>Remove</button>
             </div>
             <p>
                 <strong>Full Name:</strong>
