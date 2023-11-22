@@ -1,7 +1,7 @@
 let lessons = [
     {
         "id" : 1001,
-        "lesson": "Tennis Sport",
+        "lesson": "Tennis",
         "location": "Downtown",
         "price": 50,
         "spaces": 5,

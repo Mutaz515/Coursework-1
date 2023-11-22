@@ -6,6 +6,7 @@ var webstore = new Vue({
         showLesson: true,
         sortBy: '',
         sortOrder: '',
+        searchQuery: '',
         order: {
             name: '',
             number: ''
@@ -55,8 +56,20 @@ var webstore = new Vue({
         canCheckOut(){
             return this.order.name !== "" && this.order.number !== "";
         },
+        searchLessons() {
+            const query = this.searchQuery.toLowerCase().trim();
+            if (!query) {
+              return this.lessons;
+            } else {
+              return this.lessons.filter(
+                (lesson) =>
+                  lesson.lesson.toLowerCase().includes(query) ||
+                  lesson.location.toLowerCase().includes(query)
+              );
+            }
+          },
         sortedProducts() {
-          return  this.lessons.sort((a, b) => {
+          return  this.searchLessons.sort((a, b) => {
                 let modifier = 1;
                 if (this.sortOrder === "desc") {
                   modifier = -1;
@@ -65,6 +78,7 @@ var webstore = new Vue({
                 if (a[this.sortBy] > b[this.sortBy]) return 1 * modifier;
                 return 0;
               });
-        }
+        },
+        
     }
 });
