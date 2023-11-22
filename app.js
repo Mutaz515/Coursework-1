@@ -4,6 +4,8 @@ var webstore = new Vue({
         sitename: "After School Lessons",
         lessons: lessons,
         showLesson: true,
+        sortBy: '',
+        sortOrder: '',
         order: {
             name: '',
             number: ''
@@ -41,15 +43,15 @@ var webstore = new Vue({
             return this.order.name !== "" && this.order.number !== "";
         },
         sortedProducts() {
-            let lessonsArray = this.lessons.slice(0);
-            function compare(a, b) {
-                if (a.price > b.price)
-                    return 1;
-                if (a.price < b.price)
-                    return -1;
+          return  this.lessons.sort((a, b) => {
+                let modifier = 1;
+                if (this.sortOrder === "desc") {
+                  modifier = -1;
+                }
+                if (a[this.sortBy] < b[this.sortBy]) return -1 * modifier;
+                if (a[this.sortBy] > b[this.sortBy]) return 1 * modifier;
                 return 0;
-            }
-            return lessonsArray.sort(compare);
+              });
         }
     }
 });
