@@ -61,9 +61,8 @@
                 <img v-bind:src="getLessonDetails(lessonId).image" alt="" height="200px">
                 <h3>Lesson: {{getLessonDetails(lessonId).lesson}}</h3>
                 <p>Location: {{getLessonDetails(lessonId).location}}</p>
-                <p>Price: {{getLessonDetails(lessonId).price}}</p>
-                
-                <button>Remove</button>
+                <p>Price: {{getLessonDetails(lessonId).price}}</p>    
+                <button v-on:click="removeFromCart(index)">Remove</button>
             </div>
             <p>
                 <strong>Full Name:</strong>

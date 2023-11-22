@@ -31,6 +31,16 @@ var webstore = new Vue({
         getLessonDetails(lessonId) {
             return this.lessons.find((lesson) => lesson.id === lessonId);
           },
+          removeFromCart(index) {
+            const removedLesson = this.cart.splice(index, 1)[0];
+            const lessonIndex = this.lessons.findIndex(
+              (item) => item.id === removedLesson.id
+            );
+      
+            if (lessonIndex !== -1) {
+              this.lessons.splice(lessonIndex, 0, removedLesson);
+            }
+          },
         showCheckout() {
             this.showLesson = this.showLesson ? false : true;
         },
